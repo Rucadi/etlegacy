@@ -508,7 +508,7 @@ typedef struct
 
 	qboolean (*keyIsDown)(int keynum);
 
-	void (*getClipboardData)(char *buf, size_t bufsize);
+	void (*getClipboardData)(char *buf, unsigned int bufsize);
 
 	void (*setBinding)(int keynum, const char *binding);
 	void (*executeText)(int exec_when, const char *text);
@@ -530,7 +530,7 @@ typedef struct
 	void (*add2dPolys)(polyVert_t *verts, int numverts, qhandle_t hShader);
 	void (*updateScreen)(void);
 	void (*getHunkData)(int *hunkused, int *hunkexpected);
-	int (*getConfigString)(int index, char *buff, size_t buffsize);
+	int (*getConfigString)(int index, char *buff, unsigned int buffsize);
 
 	float yscale;
 	float xscale;
@@ -754,7 +754,7 @@ panel_button_t *BG_PanelButtons_GetFocusButton(void);
 qboolean BG_RectContainsPoint(float x, float y, float w, float h, float px, float py);
 qboolean BG_CursorInRect(rectDef_t *rect);
 
-void BG_FitTextToWidth_Ext(char *instr, float scale, float w, size_t size, fontHelper_t *font);
+void BG_FitTextToWidth_Ext(char *instr, float scale, float w, unsigned int size, fontHelper_t *font);
 
 void AdjustFrom640(float *x, float *y, float *w, float *h);
 

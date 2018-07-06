@@ -222,7 +222,7 @@ void VM_LoadSymbols(vm_t *vm)
 	vmSymbol_t **prev, *sym;
 	int        count;
 	int        value;
-	size_t     chars;
+	unsigned int     chars;
 	int        segment;
 	int        numInstructions;
 
@@ -368,7 +368,7 @@ intptr_t QDECL VM_DllSyscall(intptr_t arg, ...)
 vm_t *VM_Restart(vm_t *vm)
 {
 	vmHeader_t *header;
-	size_t     dataLength;
+	unsigned int     dataLength;
 	int        i;
 	char       filename[MAX_QPATH];
 
@@ -739,7 +739,7 @@ intptr_t QDECL VM_CallFunc(vm_t *vm, int callNum, ...)
 		// rcg010207 -  see dissertation at top of VM_DllSyscall() in this file.
 		intptr_t args[VM_SYSCALL_ARGS] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		va_list  ap;
-		size_t   i;
+		unsigned int   i;
 
 		va_start(ap, callNum);
 		for (i = 0; i < ARRAY_LEN(args); i++)

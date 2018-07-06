@@ -1114,7 +1114,7 @@ typedef struct
 /**
  * @brief Using the stringizing operator to save typing...
  */
-#define NETF(x) # x, (size_t)&((entityState_t *)0)->x
+#define NETF(x) # x, (unsigned int)&((entityState_t *)0)->x
 
 netField_t entityStateFields[] =
 {
@@ -1605,7 +1605,7 @@ entityShared_t communication
 #define CLIENTNUM_BITS  LOG2_8BIT(MAX_CLIENTS)
 
 /// Using the stringizing operator to save typing...
-#define ESF(x) # x, (size_t)&((entityShared_t *)0)->x
+#define ESF(x) # x, (unsigned int)&((entityShared_t *)0)->x
 
 netField_t entitySharedFields[] =
 {
@@ -1853,7 +1853,7 @@ player_state_t communication
 */
 
 /// Using the stringizing operator to save typing...
-#define PSF(x) # x, (size_t)&((playerState_t *)0)->x
+#define PSF(x) # x, (unsigned int)&((playerState_t *)0)->x
 
 netField_t playerStateFields[] =
 {

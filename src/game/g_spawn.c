@@ -857,7 +857,7 @@ gentity_t *G_SpawnGEntityFromSpawnVars(void)
  */
 char *G_AddSpawnVarToken(const char *string)
 {
-	size_t l;
+	unsigned int l;
 	char *dest;
 
 	l = strlen(string);

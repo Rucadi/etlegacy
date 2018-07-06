@@ -459,14 +459,14 @@ void CL_ReadDemoMessage(void);
 
 void CL_DownloadsComplete(void);
 
-void CL_GetPing(int n, char *buf, size_t buflen, int *pingtime);
-void CL_GetPingInfo(int n, char *buf, size_t buflen);
+void CL_GetPing(int n, char *buf, unsigned int buflen, int *pingtime);
+void CL_GetPingInfo(int n, char *buf, unsigned int buflen);
 void CL_ClearPing(int n);
 int CL_GetPingQueueCount(void);
 
 void CL_ShutdownRef(void);
 void CL_InitRef(void);
-int CL_ServerStatus(const char *serverAddress, char *serverStatusString, size_t maxLen);
+int CL_ServerStatus(const char *serverAddress, char *serverStatusString, unsigned int maxLen);
 
 void CL_AddToLimboChat(const char *str);
 qboolean CL_GetLimboString(int index, char *buf);

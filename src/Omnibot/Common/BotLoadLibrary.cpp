@@ -208,7 +208,7 @@ const char *OB_VA(const char *_msg, ...)
  * @return
  *
  * @note Unused
-int OB_VA_OWNBUFFER(char *_buffer, size_t _buffersize, const char *_msg, ...)
+int OB_VA_OWNBUFFER(char *_buffer, unsigned int _buffersize, const char *_msg, ...)
 {
     va_list list;
     va_start(list, _msg);
@@ -236,7 +236,7 @@ void OB_ShowLastError(const char *context)
 	if (pMessage)
 	{
 		// Strip Newlines
-		size_t i = strlen(pMessage) - 1;
+		unsigned int i = strlen(pMessage) - 1;
 		while (pMessage[i] == '\n' || pMessage[i] == '\r')
 			pMessage[i--] = 0;
 	}

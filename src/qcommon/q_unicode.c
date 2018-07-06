@@ -237,9 +237,9 @@ void Q_UTF8_Insert(char *dest, int size, int offset, int key, qboolean overstrik
  * @param[in] offset2
  * @param[in] size
  */
-void Q_UTF8_Move(char *data, size_t offset1, size_t offset2, size_t size)
+void Q_UTF8_Move(char *data, unsigned int offset1, unsigned int offset2, unsigned int size)
 {
-	size_t byteOffset1 = 0, byteOffset2 = 0, byteSize = 0;
+	unsigned int byteOffset1 = 0, byteOffset2 = 0, byteSize = 0;
 
 	if (!size)
 	{

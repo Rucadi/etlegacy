@@ -61,8 +61,8 @@ void BotDeleteMapGoal(const char *goalname);
 
 //SubscriberHandle Message_SubscribeToMsg(int _msg, pfnMessageFunction _func);
 //void Message_Unsubscribe(const SubscriberHandle _handle);
-//MessageHelper Message_BeginMessage(int _msgId, size_t _messageSize);
-//MessageHelper Message_BeginMessageEx(int _msgId, void *_mem, size_t _messageSize);
+//MessageHelper Message_BeginMessage(int _msgId, unsigned int _messageSize);
+//MessageHelper Message_BeginMessageEx(int _msgId, void *_mem, unsigned int _messageSize);
 //void Message_EndMessage(const MessageHelper &_helper);
 //void Message_EndMessageEx(const MessageHelper &_helper);
 

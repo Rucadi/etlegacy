@@ -118,7 +118,7 @@ void Con_Dump_f(void)
 	int          l, x, i;
 	unsigned int *line;
 	fileHandle_t f;
-	size_t       bufferlen;
+	unsigned int       bufferlen;
 	char         *buffer;
 	char         filename[MAX_QPATH];
 

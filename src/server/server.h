@@ -603,7 +603,7 @@ void SV_GameBinaryMessageReceived(int cno, const char *buf, int buflen, int comm
 // sv_bot.c
 int SV_BotAllocateClient(int clientNum);
 void SV_BotFreeClient(int clientNum);
-int SV_BotGetConsoleMessage(int client, char *buf, size_t size);
+int SV_BotGetConsoleMessage(int client, char *buf, unsigned int size);
 int BotImport_DebugPolygonCreate(int color, int numPoints, vec3_t *points);
 void BotImport_DebugPolygonDelete(int id);
 

@@ -770,9 +770,9 @@ void MatrixFromPlanes(mat4_t m, const vec4_t left, const vec4_t right, const vec
  * @param[in] replace
  * @return
  */
-qboolean Q_strreplace(char *dest, size_t destsize, const char *find, const char *replace)
+qboolean Q_strreplace(char *dest, unsigned int destsize, const char *find, const char *replace)
 {
-	size_t lend;
+	unsigned int lend;
 	char   *s;
 	char   backup[32000];           // big, but small enough to fit in PPC stack
 
@@ -789,7 +789,7 @@ qboolean Q_strreplace(char *dest, size_t destsize, const char *find, const char 
 	}
 	else
 	{
-		size_t lstart, lfind, lreplace;
+		unsigned int lstart, lfind, lreplace;
 
 		Q_strncpyz(backup, dest, lend + 1);
 		lstart   = s - dest;
@@ -970,7 +970,7 @@ float MemStreamGetFloat(memStream_t *s)
  *
  * @note Unused
  */
-void printBits(size_t const size, void const *const ptr)
+void printBits(unsigned int const size, void const *const ptr)
 {
 	unsigned char *b = (unsigned char *) ptr;
 	unsigned char byte;

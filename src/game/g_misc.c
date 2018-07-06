@@ -2682,7 +2682,7 @@ float AngleDifference(float ang1, float ang2)
  * @param[in] size
  * @return client name
  */
-char *ClientName(int client, char *name, size_t size)
+char *ClientName(int client, char *name, unsigned int size)
 {
 	char buf[MAX_INFO_STRING];
 

@@ -195,7 +195,7 @@ qboolean Sys_LowPhysicalMemory(void)
 const char *Sys_Basename(char *path)
 {
 	static char base[MAX_OSPATH] = { 0 };
-	size_t      length;
+	unsigned int      length;
 
 	length = strlen(path) - 1;
 
@@ -225,7 +225,7 @@ const char *Sys_Basename(char *path)
 const char *Sys_Dirname(char *path)
 {
 	static char dir[MAX_OSPATH] = { 0 };
-	size_t      length;
+	unsigned int      length;
 
 	Q_strncpyz(dir, path, sizeof(dir));
 	length = strlen(dir) - 1;
@@ -246,7 +246,7 @@ const char *Sys_Dirname(char *path)
  */
 FILE *Sys_FOpen(const char *ospath, const char *mode)
 {
-	size_t length;
+	unsigned int length;
 
 	// Windows API ignores all trailing spaces and periods which can get around Quake 3 file system restrictions.
 	length = strlen(ospath);
@@ -375,7 +375,7 @@ void Sys_ListFilteredFiles(const char *basedir, const char *subdirs, const char 
  */
 static qboolean strgtr(const char *s0, const char *s1)
 {
-	size_t l0, l1, i;
+	unsigned int l0, l1, i;
 
 	l0 = strlen(s0);
 	l1 = strlen(s1);
@@ -419,7 +419,7 @@ char **Sys_ListFiles(const char *directory, const char *extension, const char *f
 	intptr_t           findhandle;
 	int                flag;
 	int                i;
-	size_t             extLen;
+	unsigned int             extLen;
 	qboolean           invalid;
 
 	if (filter)
@@ -633,7 +633,7 @@ void Sys_ErrorDialog(const char *error)
 		{
 			char   *p = clipMemory;
 			char   buffer[1024];
-			size_t size;
+			unsigned int size;
 
 			while ((size = CON_LogRead(buffer, sizeof(buffer))) > 0)
 			{

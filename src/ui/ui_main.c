@@ -4054,7 +4054,7 @@ static void UI_LoadMods(void)
 	char   *dirptr;
 	char   *descptr;
 	int    i;
-	size_t dirlen;
+	unsigned int dirlen;
 
 	uiInfo.modCount = 0;
 	numdirs         = trap_FS_GetFileList("$modlist", "", dirlist, sizeof(dirlist));
@@ -4086,7 +4086,7 @@ static void UI_LoadProfiles(void)
 	char   dirlist[2048];
 	char   *dirptr;
 	int    i;
-	size_t dirlen;
+	unsigned int dirlen;
 
 	uiInfo.profileCount = 0;
 	uiInfo.profileIndex = -1;
@@ -4177,7 +4177,7 @@ static void UI_LoadMovies(void)
 	if (uiInfo.movieCount)
 	{
 		int    i;
-		size_t len;
+		unsigned int len;
 
 		if (uiInfo.movieCount > MAX_MOVIES)
 		{
@@ -4218,7 +4218,7 @@ static void UI_LoadDemos(void)
 	if (uiInfo.demoCount)
 	{
 		int    i;
-		size_t len;
+		unsigned int len;
 
 		if (uiInfo.demoCount > MAX_DEMOS)
 		{
@@ -6513,7 +6513,7 @@ static int UI_GetServerStatusInfo(const char *serverAddress, serverStatusInfo_t 
 	if (trap_LAN_ServerStatus(serverAddress, info->text, sizeof(info->text)))
 	{
 		int    i;
-		size_t len;
+		unsigned int len;
 
 		menu  = Menus_FindByName("serverinfo_popmenu");
 		menu2 = Menus_FindByName("popupError");
@@ -8711,7 +8711,7 @@ void UI_RegisterCvars(void)
  */
 void UI_UpdateCvars(void)
 {
-	size_t      i;
+	unsigned int      i;
 	cvarTable_t *cv;
 
 	for (i = 0, cv = cvarTable ; i < cvarTableSize ; i++, cv++)

@@ -3324,7 +3324,7 @@ void PC_UnreadToken(source_t *source, token_t *token)
  * @note Unused. Keep it here for the time being.
 void PC_SetIncludePath(source_t *source, const char *path)
 {
-    size_t len;
+    unsigned int len;
 
     Q_strncpyz(source->includepath, path, _MAX_PATH - 1);
 

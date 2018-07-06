@@ -177,7 +177,7 @@ static void         (*rd_flush)(char *buffer);
  * @param[in] buffersize
  * @param[in] flush Function pointer
  */
-void Com_BeginRedirect(char *buffer, size_t buffersize, void (*flush)(char *))
+void Com_BeginRedirect(char *buffer, unsigned int buffersize, void (*flush)(char *))
 {
 	if (!buffer || !buffersize || !flush)
 	{

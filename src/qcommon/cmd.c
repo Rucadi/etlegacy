@@ -101,7 +101,7 @@ void Cbuf_Init(void)
  */
 void Cbuf_AddText(const char *text)
 {
-	size_t l;
+	unsigned int l;
 
 	l = strlen(text);
 
@@ -122,7 +122,7 @@ void Cbuf_AddText(const char *text)
  */
 void Cbuf_InsertText(const char *text)
 {
-	size_t       len;
+	unsigned int       len;
 	unsigned int i;
 
 	len = strlen(text) + 1;
@@ -436,7 +436,7 @@ char *Cmd_Argv(int arg)
  * @param buffer
  * @param bufferLength
  */
-void Cmd_ArgvBuffer(int arg, char *buffer, size_t bufferLength)
+void Cmd_ArgvBuffer(int arg, char *buffer, unsigned int bufferLength)
 {
 	Q_strncpyz(buffer, Cmd_Argv(arg), bufferLength);
 }
@@ -534,7 +534,7 @@ char *Cmd_ArgsFromTo(int arg, int max)
  * @param[out] buffer
  * @param[in] bufferLength
  */
-void Cmd_ArgsBuffer(char *buffer, size_t bufferLength)
+void Cmd_ArgsBuffer(char *buffer, unsigned int bufferLength)
 {
 	Q_strncpyz(buffer, Cmd_Args(), bufferLength);
 }

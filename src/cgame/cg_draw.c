@@ -1673,7 +1673,7 @@ static void CG_DrawCrosshairNames(void)
 						// fail safe - this should always be the case here - cg.crosshairClientNum is in game and disguised ...
 						if (cgs.clientinfo[cg.crosshairClientNum].disguiseClientNum > -1)
 						{
-							size_t colorizedBufferLength = 32;
+							unsigned int colorizedBufferLength = 32;
 							char   colorized[32]         = { 0 };
 
 							Q_ColorizeString('7', cgs.clientinfo[cgs.clientinfo[cg.crosshairClientNum].disguiseClientNum].cleanname, colorized, colorizedBufferLength);
@@ -1742,7 +1742,7 @@ static void CG_DrawCrosshairNames(void)
 		if (cg_drawCrosshairNames.integer > 0)
 		{
 			char   colorized[32]         = { 0 };
-			size_t colorizedBufferLength = 32;
+			unsigned int colorizedBufferLength = 32;
 
 			if (cg_drawCrosshairNames.integer == 2)
 			{

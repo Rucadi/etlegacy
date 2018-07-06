@@ -2107,7 +2107,7 @@ void CG_Debriefing_ParseAwards(void)
 	char       *cs = (char *)CG_ConfigString(CS_ENDGAME_STATS);
 	const char *token;
 	char       *s;
-	size_t     size, len;
+	unsigned int     size, len;
 	int        clientNum;
 	float      value;
 	char       buffer[sizeof(cgs.dbAwardNamesBuffer)];

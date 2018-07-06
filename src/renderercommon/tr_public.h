@@ -122,7 +122,7 @@ typedef struct
 
 	void (*DrawDebugText)(const vec3_t org, float r, float g, float b, const char *text, qboolean neverOcclude);
 
-	qboolean (*GetEntityToken)(char *buffer, size_t size);
+	qboolean (*GetEntityToken)(char *buffer, unsigned int size);
 
 	void (*AddPolyBufferToScene)(polyBuffer_t *pPolyBuffer);
 

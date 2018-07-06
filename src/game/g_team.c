@@ -621,9 +621,9 @@ void TeamplayInfoMessage(team_t team)
 {
 	char      entry[1024];
 	char      string[1024];
-	size_t    stringlength = 0;
+	unsigned int    stringlength = 0;
 	int       i;
-	size_t    j;
+	unsigned int    j;
 	gentity_t *player;
 	int       cnt;
 	int       h;

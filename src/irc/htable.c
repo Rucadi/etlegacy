@@ -79,7 +79,7 @@ struct tentry_t
  * Function pointers
  */
 typedef unsigned int ( *getkey_t )(const char *key);
-typedef char * ( *keyfromentry_t )(struct tentry_t *entry, size_t key_offset);
+typedef char * ( *keyfromentry_t )(struct tentry_t *entry, unsigned int key_offset);
 typedef int ( *comparekey_t )(const char *k1, const char *k2);
 
 /**
@@ -89,19 +89,19 @@ typedef int ( *comparekey_t )(const char *k1, const char *k2);
 struct hashtable_s
 {
 	/// Actual size of the table
-	size_t size;
+	unsigned int size;
 
 	/// Table flags
 	unsigned int flags;
 
 	/// Item size
-	size_t item_size;
+	unsigned int item_size;
 
 	/// Key offset in an item
-	size_t key_offset;
+	unsigned int key_offset;
 
 	/// Length of key (0 for pointer)
-	size_t key_length;
+	unsigned int key_length;
 
 	/// Functions
 	getkey_t GetKey;
@@ -124,10 +124,10 @@ struct hashtable_s
  *=============================================*/
 
 /// Checks if a size is a prime number
-static qboolean _HT_IsPrime(size_t n);
+static qboolean _HT_IsPrime(unsigned int n);
 
 /// Finds the next higher prime number
-static size_t _HT_NextPrime(size_t n);
+static unsigned int _HT_NextPrime(unsigned int n);
 
 /// Computes a string's hash key (case insensitive)
 static unsigned int _HT_GetCIKey(const char *key);
@@ -136,16 +136,16 @@ static unsigned int _HT_GetCIKey(const char *key);
 static unsigned int _HT_GetKey(const char *key);
 
 /// Returns a table entry's key (in-table items, fixed size key)
-static char *_HT_KeyFromEntryII(struct tentry_t *entry, size_t key_offset);
+static char *_HT_KeyFromEntryII(struct tentry_t *entry, unsigned int key_offset);
 
 /// Returns a table entry's key (in-table items, pointer key)
-static char *_HT_KeyFromEntryIP(struct tentry_t *entry, size_t key_offset);
+static char *_HT_KeyFromEntryIP(struct tentry_t *entry, unsigned int key_offset);
 
 /// Returns a table entry's key (external items, fixed size key)
-static char *_HT_KeyFromEntryPI(struct tentry_t *entry, size_t key_offset);
+static char *_HT_KeyFromEntryPI(struct tentry_t *entry, unsigned int key_offset);
 
 /// Returns a table entry's key (external items, pointer key)
-static char *_HT_KeyFromEntryPP(struct tentry_t *entry, size_t key_offset);
+static char *_HT_KeyFromEntryPP(struct tentry_t *entry, unsigned int key_offset);
 
 /// Allocate and initialise a table entry.
 static struct tentry_t *_HT_CreateEntry(hashtable_t table, unsigned int hash, struct listhead_t *list_entry, const char *key);
@@ -169,15 +169,15 @@ static void _HT_InsertInGlobalList(hashtable_t table, struct tentry_t *t_entry, 
  *			  will be accessed as a pointer instead of an array
  */
 hashtable_t HT_Create(
-    size_t size,
+    unsigned int size,
     unsigned int flags,
-    size_t item_size,
-    size_t key_offset,
-    size_t key_length
+    unsigned int item_size,
+    unsigned int key_offset,
+    unsigned int key_length
     )
 {
 	hashtable_t       table;
-	size_t            real_size;
+	unsigned int            real_size;
 	struct listhead_t *t_item;
 
 	// Allocate table
@@ -605,11 +605,11 @@ void HT_Apply(
  * @param[in] n
  * @return
  */
-static qboolean _HT_IsPrime(size_t n)
+static qboolean _HT_IsPrime(unsigned int n)
 {
-	size_t temp;
-	size_t nsq;
-	size_t inc;
+	unsigned int temp;
+	unsigned int nsq;
+	unsigned int inc;
 
 	if (n == 0)
 	{
@@ -636,9 +636,9 @@ static qboolean _HT_IsPrime(size_t n)
  * @param[in] n
  * @return
  */
-static size_t _HT_NextPrime(size_t n)
+static unsigned int _HT_NextPrime(unsigned int n)
 {
-	size_t value = n;
+	unsigned int value = n;
 	while (!_HT_IsPrime(value))
 		value++;
 	return value;
@@ -708,7 +708,7 @@ static unsigned int _HT_GetKey(const char *key)
  * @param[in] key_offset
  * @return
  */
-static char *_HT_KeyFromEntryII(struct tentry_t *entry, size_t key_offset)
+static char *_HT_KeyFromEntryII(struct tentry_t *entry, unsigned int key_offset)
 {
 	void *item_addr;
 
@@ -722,7 +722,7 @@ static char *_HT_KeyFromEntryII(struct tentry_t *entry, size_t key_offset)
  * @param[in] key_offset
  * @return
  */
-static char *_HT_KeyFromEntryIP(struct tentry_t *entry, size_t key_offset)
+static char *_HT_KeyFromEntryIP(struct tentry_t *entry, unsigned int key_offset)
 {
 	void *item_addr;
 
@@ -736,7 +736,7 @@ static char *_HT_KeyFromEntryIP(struct tentry_t *entry, size_t key_offset)
  * @param[in] key_offset
  * @return
  */
-static char *_HT_KeyFromEntryPI(struct tentry_t *entry, size_t key_offset)
+static char *_HT_KeyFromEntryPI(struct tentry_t *entry, unsigned int key_offset)
 {
 	void *item_addr;
 
@@ -750,7 +750,7 @@ static char *_HT_KeyFromEntryPI(struct tentry_t *entry, size_t key_offset)
  * @param[in] key_offset
  * @return
  */
-static char *_HT_KeyFromEntryPP(struct tentry_t *entry, size_t key_offset)
+static char *_HT_KeyFromEntryPP(struct tentry_t *entry, unsigned int key_offset)
 {
 	void *item_addr;
 
@@ -778,7 +778,7 @@ static struct tentry_t *_HT_CreateEntry(
 {
 	// Allocate new entry
 	struct tentry_t *t_entry;
-	size_t          entry_size = sizeof(struct tentry_t);
+	unsigned int          entry_size = sizeof(struct tentry_t);
 
 	entry_size   += (table->flags & HT_FLAG_INTABLE) ? table->item_size : sizeof(void *);
 	t_entry       = Z_Malloc(entry_size);

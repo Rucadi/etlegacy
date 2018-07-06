@@ -146,7 +146,7 @@ void COM_StripExtension(const char *in, char *out, int destsize)
  */
 qboolean COM_CompareExtension(const char *in, const char *ext)
 {
-	size_t inlen = strlen(in), extlen = strlen(ext);
+	unsigned int inlen = strlen(in), extlen = strlen(ext);
 
 	if (extlen <= inlen)
 	{
@@ -181,7 +181,7 @@ void COM_StripFilename(const char *in, char *out)
  * @param[in] maxSize
  * @param[in] extension
  */
-void COM_DefaultExtension(char *path, size_t maxSize, const char *extension)
+void COM_DefaultExtension(char *path, unsigned int maxSize, const char *extension)
 {
 	const char *dot = strrchr(path, '.'), *slash;
 
@@ -985,7 +985,7 @@ char *COM_ParseExt2(char **data_p, qboolean allowLineBreaks)
 	// check for multi-character punctuation token
 	for (punc = punctuation; *punc; punc++)
 	{
-		size_t j, l;
+		unsigned int j, l;
 
 		l = strlen(*punc);
 		for (j = 0; j < l; j++)
@@ -1438,7 +1438,7 @@ int Q_isforfilename(int c)
  * @param[in] ap
  * @return
  */
-int Q_vsnprintf(char *str, size_t size, const char *format, va_list args)
+int Q_vsnprintf(char *str, unsigned int size, const char *format, va_list args)
 {
 	int retval;
 
@@ -1467,7 +1467,7 @@ int Q_vsnprintf(char *str, size_t size, const char *format, va_list args)
  * @param[in] src
  * @param[in] destsize
  */
-void Q_strncpyz(char *dest, const char *src, size_t destsize)
+void Q_strncpyz(char *dest, const char *src, unsigned int destsize)
 {
 	if (!dest)
 	{
@@ -1493,7 +1493,7 @@ void Q_strncpyz(char *dest, const char *src, size_t destsize)
  * @param[in] n
  * @return
  */
-int Q_stricmpn(const char *s1, const char *s2, size_t n)
+int Q_stricmpn(const char *s1, const char *s2, unsigned int n)
 {
 	int c1, c2;
 
@@ -1551,7 +1551,7 @@ int Q_stricmpn(const char *s1, const char *s2, size_t n)
  * @param[in] n
  * @return
  */
-int Q_strncmp(const char *s1, const char *s2, size_t n)
+int Q_strncmp(const char *s1, const char *s2, unsigned int n)
 {
 	int c1, c2;
 
@@ -1634,9 +1634,9 @@ char *Q_strupr(char *s1)
  *
  * @note Never goes past bounds or leaves without a terminating 0
  */
-void Q_strcat(char *dest, size_t size, const char *src)
+void Q_strcat(char *dest, unsigned int size, const char *src)
 {
-	size_t l1;
+	unsigned int l1;
 
 	l1 = strlen(dest);
 	if (l1 >= size)
@@ -1659,7 +1659,7 @@ const char *Q_stristr(const char *s, const char *find)
 	if ((c = *find++) != 0)
 	{
 		char   sc;
-		size_t len;
+		unsigned int len;
 
 		if (c >= 'a' && c <= 'z')
 		{
@@ -1763,7 +1763,7 @@ char *Q_CleanStr(char *string)
  * @param[out] outStr
  * @param[in] outBufferLen
  */
-void Q_ColorizeString(char colorCode, const char *inStr, char *outStr, size_t outBufferLen)
+void Q_ColorizeString(char colorCode, const char *inStr, char *outStr, unsigned int outBufferLen)
 {
 	if (outBufferLen < 3 || inStr == outStr)
 	{
@@ -1772,15 +1772,15 @@ void Q_ColorizeString(char colorCode, const char *inStr, char *outStr, size_t ou
 	}
 	else
 	{
-		size_t inLen     = strlen(inStr);
-		size_t outOffset = 0;
+		unsigned int inLen     = strlen(inStr);
+		unsigned int outOffset = 0;
 
 		outStr[outOffset++] = Q_COLOR_ESCAPE;
 		outStr[outOffset++] = colorCode;
 
 		if (outOffset + 1 < outBufferLen)
 		{
-			size_t inOffset = 0;
+			unsigned int inOffset = 0;
 
 			while (inOffset < inLen && outOffset < outBufferLen)
 			{
@@ -2004,9 +2004,9 @@ char *QDECL va(const char *format, ...)
 	va_list       argptr;
 	static char   temp_buffer[MAX_VA_STRING];
 	static char   string[MAX_VA_STRING];  // in case va is called by nested functions
-	static size_t index = 0;
+	static unsigned int index = 0;
 	char          *buf;
-	size_t        len;
+	unsigned int        len;
 
 	va_start(argptr, format);
 	vsprintf(temp_buffer, format, argptr); // Q_vsnprintf ???
@@ -2037,7 +2037,7 @@ char *QDECL va(const char *format, ...)
  */
 void Com_TruncateLongString(char *buffer, const char *s)
 {
-	size_t length = strlen(s);
+	unsigned int length = strlen(s);
 
 	if (length <= TRUNCATE_LENGTH)
 	{
@@ -2474,8 +2474,8 @@ char *Q_StrReplace(char *haystack, const char *needle, const char *newVal)
 	char        dest[MAX_STRING_CHARS]  = { "" };
 	char        new[MAX_STRING_CHARS]   = { "" };
 	char        *destp;
-	size_t      needle_len = 0;
-	size_t      new_len    = 0;
+	unsigned int      needle_len = 0;
+	unsigned int      new_len    = 0;
 
 	if (!haystack || !*haystack)
 	{
@@ -2630,9 +2630,9 @@ float rint(float v)
  *
  * @note Unused
  */
-void *Q_LinearSearch(const void *key, const void *ptr, size_t count, size_t size, cmpFunc_t cmp)
+void *Q_LinearSearch(const void *key, const void *ptr, unsigned int count, unsigned int size, cmpFunc_t cmp)
 {
-	size_t i;
+	unsigned int i;
 
 	for (i = 0; i < count; i++)
 	{

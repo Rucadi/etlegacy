@@ -730,7 +730,7 @@ static void Sys_ClearExecBuffer(void)
 
 static void Sys_AppendToExecBuffer(const char *text)
 {
-	size_t size   = sizeof(execBuffer) - (execBufferPointer - execBuffer);
+	unsigned int size   = sizeof(execBuffer) - (execBufferPointer - execBuffer);
 	int    length = strlen(text) + 1;
 
 	if (length > size || execArgc >= ARRAY_LEN(execArgv))

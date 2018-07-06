@@ -605,11 +605,11 @@ void Cmd_RestoreCmdContext(void);
 
 int Cmd_Argc(void);
 char *Cmd_Argv(int arg);
-void Cmd_ArgvBuffer(int arg, char *buffer, size_t bufferLength);
+void Cmd_ArgvBuffer(int arg, char *buffer, unsigned int bufferLength);
 char *Cmd_Args(void);
 char *Cmd_ArgsFrom(int arg);
 char *Cmd_ArgsFromTo(int arg, int max);
-void Cmd_ArgsBuffer(char *buffer, size_t bufferLength);
+void Cmd_ArgsBuffer(char *buffer, unsigned int bufferLength);
 char *Cmd_Cmd(void);
 
 /**
@@ -685,9 +685,9 @@ int Cvar_VariableIntegerValue(const char *var_name);
 // returns 0 if not defined or non numeric
 
 char *Cvar_VariableString(const char *var_name);
-void Cvar_VariableStringBuffer(const char *var_name, char *buffer, size_t bufsize);
+void Cvar_VariableStringBuffer(const char *var_name, char *buffer, unsigned int bufsize);
 // returns an empty string if not defined
-void Cvar_LatchedVariableStringBuffer(const char *var_name, char *buffer, size_t bufsize);
+void Cvar_LatchedVariableStringBuffer(const char *var_name, char *buffer, unsigned int bufsize);
 // returns the latched value if there is one, else the normal one, empty string if not defined as usual
 
 int Cvar_Flags(const char *var_name);
@@ -717,7 +717,7 @@ char *Cvar_InfoString(int bit);
 char *Cvar_InfoString_Big(int bit);
 // returns an info string containing all the cvars that have the given bit set
 // in their flags ( CVAR_USERINFO, CVAR_SERVERINFO, CVAR_SYSTEMINFO, etc )
-void Cvar_InfoStringBuffer(int bit, char *buff, size_t buffsize);
+void Cvar_InfoStringBuffer(int bit, char *buff, unsigned int buffsize);
 void Cvar_CheckRange(cvar_t *cv, float minVal, float maxVal, qboolean shouldBeIntegral);
 void Cvar_SetDescription(cvar_t *cv, const char *varDescription);
 
@@ -924,7 +924,7 @@ void FS_PureServerSetLoadedPaks(const char *pakSums, const char *pakNames);
 qboolean FS_CheckDirTraversal(const char *checkdir);
 qboolean FS_VerifyOfficialPaks(void);
 qboolean FS_idPak(const char *pak, const char *base);
-qboolean FS_ComparePaks(char *neededpaks, size_t len, qboolean dlstring);
+qboolean FS_ComparePaks(char *neededpaks, unsigned int len, qboolean dlstring);
 qboolean FS_InvalidGameDir(const char *gamedir);
 
 void FS_Rename(const char *from, const char *to);
@@ -1001,7 +1001,7 @@ MISC
 char *CopyString(const char *in);
 void Info_Print(const char *s);
 
-void Com_BeginRedirect(char *buffer, size_t buffersize, void (*flush)(char *));
+void Com_BeginRedirect(char *buffer, unsigned int buffersize, void (*flush)(char *));
 void Com_EndRedirect(void);
 void QDECL Com_Printf(const char *fmt, ...) __attribute__ ((format(printf, 1, 2)));
 void QDECL Com_DPrintf(const char *fmt, ...) __attribute__ ((format(printf, 1, 2)));
@@ -1009,7 +1009,7 @@ void QDECL Com_Error(int code, const char *fmt, ...) __attribute__ ((noreturn, f
 void Com_Quit_f(void) __attribute__ ((noreturn));
 
 int Com_Milliseconds(void);     // will be journaled properly
-unsigned int Com_BlockChecksum(const void *buffer, size_t length);
+unsigned int Com_BlockChecksum(const void *buffer, unsigned int length);
 unsigned int Com_BlockChecksumKey(void *buffer, int length, int key);
 char *Com_MD5FileETCompat(const char *fileName);
 int Com_HashKey(char *string, int maxlen);

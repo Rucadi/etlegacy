@@ -138,11 +138,11 @@ static void push_column(lua_State *L, sqlite3_stmt *vm, int column) {
     break;
   case SQLITE_TEXT:
     lua_pushlstring(L, (const char *)sqlite3_column_text(vm, column),
-		    (size_t)sqlite3_column_bytes(vm, column));
+		    (unsigned int)sqlite3_column_bytes(vm, column));
     break;
   case SQLITE_BLOB:
     lua_pushlstring(L, sqlite3_column_blob(vm, column),
-		    (size_t)sqlite3_column_bytes(vm, column));
+		    (unsigned int)sqlite3_column_bytes(vm, column));
     break;
   case SQLITE_NULL:
     lua_pushnil(L);

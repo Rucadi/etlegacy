@@ -74,7 +74,7 @@ typedef struct write_result_s
  * @param[in] stream
  * @return
  */
-static size_t DL_cb_FWriteFile(void *ptr, size_t size, size_t nmemb, void *stream)
+static unsigned int DL_cb_FWriteFile(void *ptr, unsigned int size, unsigned int nmemb, void *stream)
 {
 	FILE *file = (FILE *)stream;
 	return fwrite(ptr, size, nmemb, file);
@@ -106,7 +106,7 @@ static int DL_cb_Progress(void *clientp, double dltotal, double dlnow, double ul
  * @param[out] stream
  * @return
  */
-size_t DL_write_function(void *ptr, size_t size, size_t nmemb, void *stream)
+unsigned int DL_write_function(void *ptr, unsigned int size, unsigned int nmemb, void *stream)
 {
 	write_result_t *result = (write_result_t *)stream;
 

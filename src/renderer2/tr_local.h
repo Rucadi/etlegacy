@@ -360,7 +360,7 @@ static ID_INLINE void EnQueue(link_t *sentinel, void *data)
  * @param[in] data
  *
  * @note Unused
-static ID_INLINE void EnQueue2(link_t *sentinel, void *data, void *(*mallocFunc)(size_t __size))
+static ID_INLINE void EnQueue2(link_t *sentinel, void *data, void *(*mallocFunc)(unsigned int __size))
 {
     link_t *l;
 
@@ -1813,7 +1813,7 @@ typedef struct programInfo_s
 	struct programInfo_s *next;
 }programInfo_t;
 
-#define SHADER_PROGRAM_T_OFS(x) ((size_t)&(((shaderProgram_t *)0)->x))
+#define SHADER_PROGRAM_T_OFS(x) ((unsigned int)&(((shaderProgram_t *)0)->x))
 
 //=================================================================================
 
@@ -4072,7 +4072,7 @@ void RE_Shutdown(qboolean destroyWindow);
 qboolean RE_GetSkinModel(qhandle_t skinid, const char *type, char *name);
 qhandle_t RE_GetShaderFromModel(qhandle_t modelid, int surfnum, int withlightmap);
 
-qboolean R_GetEntityToken(char *buffer, size_t size);
+qboolean R_GetEntityToken(char *buffer, unsigned int size);
 float R_ProcessLightmap(byte *pic, int in_padding, int width, int height, byte *pic_out);
 
 model_t *R_AllocModel(void);
@@ -4085,7 +4085,7 @@ void R_GammaCorrect(byte *buffer, int bufSize);
 void R_ImageList_f(void);
 void R_SkinList_f(void);
 
-void R_SubImageCpy(byte *dest, size_t destx, size_t desty, size_t destw, size_t desth, byte *src, size_t srcw, size_t srch, size_t bytes, qboolean in);
+void R_SubImageCpy(byte *dest, unsigned int destx, unsigned int desty, unsigned int destw, unsigned int desth, byte *src, unsigned int srcw, unsigned int srch, unsigned int bytes, qboolean in);
 
 // https://zerowing.idsoftware.com/bugzilla/show_bug.cgi?id=516
 const void *RB_TakeScreenshotCmd(const void *data);
@@ -4572,7 +4572,7 @@ RENDERER IMAGE FUNCTIONS
 */
 
 void R_LoadJPG(const char *filename, unsigned char **pic, int *width, int *height, byte alphaByte);
-size_t RE_SaveJPGToBuffer(byte *buffer, size_t bufSize, int quality, int image_width, int image_height, byte *image_buffer, int padding);
+unsigned int RE_SaveJPGToBuffer(byte *buffer, unsigned int bufSize, int quality, int image_width, int image_height, byte *image_buffer, int padding);
 void RE_SaveJPG(const char *filename, int quality, int image_width, int image_height, byte *image_buffer, int padding);
 
 void R_LoadPNG(const char *name, byte **pic, int *width, int *height, byte alphaByte);

@@ -5300,7 +5300,7 @@ void R_LoadEntities(lump_t *l)
  * @param[in] size
  * @return
  */
-qboolean R_GetEntityToken(char *buffer, size_t size)
+qboolean R_GetEntityToken(char *buffer, unsigned int size)
 {
 	const char *s;
 
@@ -7625,15 +7625,15 @@ void R_BuildCubeMaps(void)
 	//qboolean        bad;
 
 	//srfSurfaceStatic_t *sv;
-	size_t tics         = 0;
-	size_t nextTicCount = 0;
+	unsigned int tics         = 0;
+	unsigned int nextTicCount = 0;
 #ifdef LEGACY_DEBUG
 	int startTime, endTime;
 
 	startTime = ri.Milliseconds();
 #endif
 
-	size_t ticsNeeded;
+	unsigned int ticsNeeded;
 	byte   r, g, b, best;
 
 	Com_Memset(&rf, 0, sizeof(refdef_t));
@@ -7793,7 +7793,7 @@ void R_BuildCubeMaps(void)
 
 		if ((j + 1) >= nextTicCount)
 		{
-			ticsNeeded = (size_t)(((double)(j + 1) / tr.cubeProbes.currentElements) * 50.0);
+			ticsNeeded = (unsigned int)(((double)(j + 1) / tr.cubeProbes.currentElements) * 50.0);
 
 			do
 			{
@@ -7803,7 +7803,7 @@ void R_BuildCubeMaps(void)
 			}
 			while (++tics < ticsNeeded);
 
-			nextTicCount = (size_t)((tics / 50.0) * tr.cubeProbes.currentElements);
+			nextTicCount = (unsigned int)((tics / 50.0) * tr.cubeProbes.currentElements);
 			if ((j + 1) == tr.cubeProbes.currentElements)
 			{
 				if (tics < 51)

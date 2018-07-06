@@ -1328,9 +1328,9 @@ void AddMedicTeamBonus(gclient_t *client)
  * @param[out] out
  * @param[in] outSize
  */
-static void ClientCleanName(const char *in, char *out, size_t outSize)
+static void ClientCleanName(const char *in, char *out, unsigned int outSize)
 {
-	size_t len          = 0;
+	unsigned int len          = 0;
 	int    colorlessLen = 0;
 	char   ch;
 	char   *p;

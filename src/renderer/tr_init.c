@@ -295,7 +295,7 @@ void GL_CheckErrors(void)
  * @param[in,out] padlen
  * @return
  */
-byte *RB_ReadPixels(int x, int y, int width, int height, size_t *offset, int *padlen)
+byte *RB_ReadPixels(int x, int y, int width, int height, unsigned int *offset, int *padlen)
 {
 	byte  *buffer, *bufstart;
 	int   padwidth, linelen;
@@ -367,7 +367,7 @@ void RB_TakeDepthshot(int x, int y, int width, int height, const char *fileName)
     byte   *srcptr, *destptr;
     byte   *endline, *endmem;
     int    linelen, padlen;
-    size_t offset = 18, memcount;
+    unsigned int offset = 18, memcount;
 
     allbuf = RB_ReadZBuffer(x, y, width, height, &padlen);
     buffer = ri.Hunk_AllocateTempMemory(width * height * 3 + offset);
@@ -426,7 +426,7 @@ void RB_TakeScreenshot(int x, int y, int width, int height, const char *fileName
 	byte   *endline, *endmem;
 	byte   temp;
 	int    linelen, padlen;
-	size_t offset = 18, memcount;
+	unsigned int offset = 18, memcount;
 
 	allbuf = RB_ReadPixels(x, y, width, height, &offset, &padlen);
 	buffer = allbuf + offset - 18;
@@ -487,7 +487,7 @@ void RB_TakeScreenshot(int x, int y, int width, int height, const char *fileName
 void RB_TakeScreenshotJPEG(int x, int y, int width, int height, char *fileName)
 {
 	byte   *buffer;
-	size_t offset = 0, memcount;
+	unsigned int offset = 0, memcount;
 	int    padlen;
 
 	buffer   = RB_ReadPixels(x, y, width, height, &offset, &padlen);
@@ -617,7 +617,7 @@ const void *RB_TakeVideoFrameCmd(const void *data)
 {
 	const videoFrameCommand_t *cmd;
 	byte                      *cBuf;
-	size_t                    memcount, linelen;
+	unsigned int                    memcount, linelen;
 	int                       padwidth, avipadwidth, padlen, avipadlen;
 	GLint                     packAlign;
 
@@ -703,7 +703,7 @@ void R_LevelShot(void)
 	byte   *buffer;
 	byte   *source, *allsource;
 	byte   *src, *dst;
-	size_t offset = 0;
+	unsigned int offset = 0;
 	int    padlen;
 	int    x, y;
 	int    r, g, b;

@@ -436,7 +436,7 @@ static qboolean Sys_StringToSockaddr(const char *s, struct sockaddr *sadr, int s
  * @param[in] destlen
  * @param[in] input
  */
-static void Sys_SockaddrToString(char *dest, size_t destlen, struct sockaddr *input)
+static void Sys_SockaddrToString(char *dest, unsigned int destlen, struct sockaddr *input)
 {
 	socklen_t inputlen;
 
@@ -1612,7 +1612,7 @@ static void NET_AddLocalAddress(const char *ifname, struct sockaddr *addr, struc
 
 	if (numIP < MAX_IPS)
 	{
-		size_t addrlen;
+		unsigned int addrlen;
 
 		if (family == AF_INET)
 		{

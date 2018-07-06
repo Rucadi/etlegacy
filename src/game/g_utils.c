@@ -1745,7 +1745,7 @@ void G_ParseCampaigns(void)
 	if (!mapFound)
 	{
 		// get all campaigns from .campaign files
-		size_t dirlen  = 0;
+		unsigned int dirlen  = 0;
 		int    numdirs = trap_FS_GetFileList("scripts", ".campaign", bigTextBuffer, sizeof(bigTextBuffer));
 		char   filename[MAX_QPATH]; // was 128
 		char   *dirptr = bigTextBuffer;

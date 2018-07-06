@@ -1943,7 +1943,7 @@ void CG_DemoHelpDraw(void)
  * @param[in] len
  * @return
  */
-char *CG_getBindKeyName(const char *cmd, char *buf, size_t len)
+char *CG_getBindKeyName(const char *cmd, char *buf, unsigned int len)
 {
 	int j;
 

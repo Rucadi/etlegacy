@@ -162,7 +162,7 @@ typedef int intptr_t;
 
 // vsnprintf is ISO/IEC 9899:1999
 // abstracting this to make it portable
-int Q_vsnprintf(char *str, size_t size, const char *format, va_list args);
+int Q_vsnprintf(char *str, unsigned int size, const char *format, va_list args);
 #elif defined (_MSC_VER)
 #include <io.h>
 
@@ -177,7 +177,7 @@ typedef unsigned __int8 uint8_t;
 
 // vsnprintf is ISO/IEC 9899:1999
 // abstracting this to make it portable
-int Q_vsnprintf(char *str, size_t size, const char *format, va_list args);
+int Q_vsnprintf(char *str, unsigned int size, const char *format, va_list args);
 #else // not using MSVC
 #include <stdint.h>
 #define Q_vsnprintf vsnprintf
@@ -609,7 +609,7 @@ void COM_StripExtension(const char *in, char *out, int destsize);
 qboolean COM_CompareExtension(const char *in, const char *ext);
 void COM_StripFilename(const char *in, char *out);
 
-void COM_DefaultExtension(char *path, size_t maxSize, const char *extension);
+void COM_DefaultExtension(char *path, unsigned int maxSize, const char *extension);
 
 void COM_BeginParseSession(const char *name);
 void COM_RestoreParseSession(char **data_p);
@@ -713,8 +713,8 @@ int Q_isforfilename(int c);
 
 // portable case insensitive compare
 int Q_stricmp(const char *s1, const char *s2);
-int Q_strncmp(const char *s1, const char *s2, size_t n);
-int Q_stricmpn(const char *s1, const char *s2, size_t n);
+int Q_strncmp(const char *s1, const char *s2, unsigned int n);
+int Q_stricmpn(const char *s1, const char *s2, unsigned int n);
 char *Q_strlwr(char *s1);
 char *Q_strupr(char *s1);
 const char *Q_stristr(const char *s, const char *find);
@@ -722,16 +722,16 @@ const char *Q_stristr(const char *s, const char *find);
 #define Q_strcpy(dest, src) strcpy(dest, src)
 
 /// buffer size safe library replacements
-void Q_strncpyz(char *dest, const char *src, size_t destsize);
+void Q_strncpyz(char *dest, const char *src, unsigned int destsize);
 
 /// buffer size safe library replacements
-void Q_strcat(char *dest, size_t size, const char *src);
+void Q_strcat(char *dest, unsigned int size, const char *src);
 
 /// strlen that discounts Quake color sequences
 int Q_PrintStrlen(const char *string);
 
 /// Encodes a plain un-colored string so that it'll be drawn with the given color code.
-void Q_ColorizeString(char colorCode, const char *inStr, char *outStr, size_t outBufferLen);
+void Q_ColorizeString(char colorCode, const char *inStr, char *outStr, unsigned int outBufferLen);
 
 /// removes color sequences from string
 char *Q_CleanStr(char *string);
@@ -1763,7 +1763,7 @@ typedef struct demoPlayInfo_s
 
 typedef int (*cmpFunc_t)(const void *a, const void *b);
 
-void *Q_LinearSearch(const void *key, const void *ptr, size_t count, size_t size, cmpFunc_t cmp);
+void *Q_LinearSearch(const void *key, const void *ptr, unsigned int count, unsigned int size, cmpFunc_t cmp);
 
 int GetIPLength(char const *ip);
 qboolean CompareIPNoPort(char const *ip1, char const *ip2);

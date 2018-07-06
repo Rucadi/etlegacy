@@ -1448,9 +1448,9 @@ qboolean ParseTexMod(char **text, shaderStage_t *stage)
  * @param[in] bufferSize
  * @return
  */
-static qboolean ParseMap(shaderStage_t *stage, char **text, char *buffer, size_t bufferSize)
+static qboolean ParseMap(shaderStage_t *stage, char **text, char *buffer, unsigned int bufferSize)
 {
-	size_t len;
+	unsigned int len;
 	char   *token;
 
 	// examples
@@ -4237,7 +4237,7 @@ static qboolean ParseShader(char *_text)
 		// ET sunshader <name>
 		else if (!Q_stricmp(token, "sunshader"))
 		{
-			size_t tokenLen;
+			unsigned int tokenLen;
 
 			token = COM_ParseExt2(text, qfalse);
 			if (!token[0])

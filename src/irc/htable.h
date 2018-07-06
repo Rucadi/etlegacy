@@ -71,11 +71,11 @@ typedef qboolean ( *ht_apply_funct )(void *item, void *extra);
  *=============================================*/
 
 hashtable_t HT_Create(
-    size_t size,
+    unsigned int size,
     unsigned int flags,
-    size_t item_size,
-    size_t key_offset,
-    size_t key_length
+    unsigned int item_size,
+    unsigned int key_offset,
+    unsigned int key_length
     );
 
 /**

@@ -212,7 +212,7 @@ void QuatMultiply4(const quat_t qa, const quat_t qb, quat_t qc);
 
 #define Vector5Copy(a, b) ((b)[0] = (a)[0], (b)[1] = (a)[1], (b)[2] = (a)[2], (b)[3] = (a)[3], (b)[4] = (a)[4])
 
-qboolean Q_strreplace(char *dest, size_t destsize, const char *find, const char *replace);
+qboolean Q_strreplace(char *dest, unsigned int destsize, const char *find, const char *replace);
 
 #define DotProduct4(x, y)             ((x)[0] * (y)[0] + (x)[1] * (y)[1] + (x)[2] * (y)[2] + (x)[3] * (y)[3])
 
@@ -368,6 +368,6 @@ float           MemStreamGetFloat(memStream_t *s);
 
 //=============================================
 
-void printBits(size_t const size, void const *const ptr);
+void printBits(unsigned int const size, void const *const ptr);
 
 #endif

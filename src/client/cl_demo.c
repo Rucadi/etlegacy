@@ -1423,7 +1423,7 @@ void CL_PlayDemo_f(void)
 		}
 		else
 		{
-			size_t len;
+			unsigned int len;
 
 			Com_FuncPrinf("Protocol %d not supported for demos\n", protocol);
 			len = ext_test - arg;

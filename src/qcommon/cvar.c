@@ -154,7 +154,7 @@ char *Cvar_VariableString(const char *var_name)
  * @param[out] buffer
  * @param[in] bufsize
  */
-void Cvar_VariableStringBuffer(const char *var_name, char *buffer, size_t bufsize)
+void Cvar_VariableStringBuffer(const char *var_name, char *buffer, unsigned int bufsize)
 {
 	cvar_t *var;
 
@@ -175,7 +175,7 @@ void Cvar_VariableStringBuffer(const char *var_name, char *buffer, size_t bufsiz
  * @param[out] buffer
  * @param[in] bufsize
  */
-void Cvar_LatchedVariableStringBuffer(const char *var_name, char *buffer, size_t bufsize)
+void Cvar_LatchedVariableStringBuffer(const char *var_name, char *buffer, unsigned int bufsize)
 {
 	cvar_t *var;
 
@@ -1583,7 +1583,7 @@ char *Cvar_InfoString_Big(int bit)
  * @param[out] buff
  * @param[in] buffsize
  */
-void Cvar_InfoStringBuffer(int bit, char *buff, size_t buffsize)
+void Cvar_InfoStringBuffer(int bit, char *buff, unsigned int buffsize)
 {
 	Q_strncpyz(buff, Cvar_InfoString(bit), buffsize);
 }

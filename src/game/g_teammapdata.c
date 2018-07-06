@@ -40,7 +40,7 @@
  * @param[in] size
  * @param[in] mEnt
  */
-void G_PushMapEntityToBuffer(char *buffer, size_t size, mapEntityData_t *mEnt)
+void G_PushMapEntityToBuffer(char *buffer, unsigned int size, mapEntityData_t *mEnt)
 {
 	char buf[32];
 

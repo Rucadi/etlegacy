@@ -419,7 +419,7 @@ void CG_ParseEntityFromSpawnVars(void)
  */
 char *CG_AddSpawnVarToken(const char *string)
 {
-	size_t l;
+	unsigned int l;
 	char   *dest;
 
 	l = strlen(string);

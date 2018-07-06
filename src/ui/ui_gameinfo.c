@@ -257,7 +257,7 @@ void UI_LoadArenas(void)
 	char   dirlist[8192];
 	char   *dirptr;
 	int    i;
-	size_t dirlen;
+	unsigned int dirlen;
 
 	uiInfo.mapCount = 0;
 
@@ -633,7 +633,7 @@ void UI_LoadCampaigns(void)
 	char       dirlist[2048];
 	char       *dirptr;
 	int        i, j;
-	size_t     dirlen;
+	unsigned int     dirlen;
 	long       hash;
 	const char *ch;
 

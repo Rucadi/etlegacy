@@ -37,7 +37,7 @@
 /**
  * Include file for users of JPEG library.
  * You will need to have included system headers that define at least
- * the typedefs FILE and size_t before you can include jpeglib.h.
+ * the typedefs FILE and unsigned int before you can include jpeglib.h.
  * (stdio.h is sufficient on ANSI-conforming systems.)
  * You may also wish to include "jerror.h".
  */
@@ -409,14 +409,14 @@ static void jpegDest(j_compress_ptr cinfo, byte *outfile, int size)
  * @param[in] padding
  * @return
  */
-size_t RE_SaveJPGToBuffer(byte *buffer, size_t bufSize, int quality, int image_width, int image_height, byte *image_buffer, int padding)
+unsigned int RE_SaveJPGToBuffer(byte *buffer, unsigned int bufSize, int quality, int image_width, int image_height, byte *image_buffer, int padding)
 {
 	struct jpeg_compress_struct cinfo;
 	struct jpeg_error_mgr       jerr;
 	JSAMPROW                    row_pointer[1]; /* pointer to JSAMPLE row[s] */
 	my_dest_ptr                 dest;
 	int                         row_stride; /* physical row width in image buffer */
-	size_t                      outcount;
+	unsigned int                      outcount;
 
 	/* Step 1: allocate and initialize JPEG compression object */
 	cinfo.err                 = jpeg_std_error(&jerr);
@@ -487,7 +487,7 @@ size_t RE_SaveJPGToBuffer(byte *buffer, size_t bufSize, int quality, int image_w
 void RE_SaveJPG(const char *filename, int quality, int image_width, int image_height, byte *image_buffer, int padding)
 {
 	byte   *out;
-	size_t bufSize;
+	unsigned int bufSize;
 
 	bufSize = image_width * image_height * 3;
 	out     = ri.Hunk_AllocateTempMemory(bufSize);

@@ -2533,10 +2533,10 @@ static void R_Rotate(byte *in, int width, int height, int degrees)
  * [________]
  * ===============
 */
-void R_SubImageCpy(byte *dest, size_t destx, size_t desty, size_t destw, size_t desth, byte *src, size_t srcw, size_t srch, size_t bytes, qboolean in)
+void R_SubImageCpy(byte *dest, unsigned int destx, unsigned int desty, unsigned int destw, unsigned int desth, byte *src, unsigned int srcw, unsigned int srch, unsigned int bytes, qboolean in)
 {
-	size_t s_rowBytes = srcw * bytes;
-	size_t d_rowBytes = destw * bytes;
+	unsigned int s_rowBytes = srcw * bytes;
+	unsigned int d_rowBytes = destw * bytes;
 	byte   *d         = dest + ((destx * bytes) + (desty * d_rowBytes));
 	byte   *d_max     = dest + (destw * desth * bytes) - s_rowBytes;
 	byte   *s         = src;

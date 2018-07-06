@@ -569,7 +569,7 @@ qboolean ParseShaderR1(char *_text)
 		// ET sunshader <name>
 		else if (!Q_stricmp(token, "sunshader"))
 		{
-			size_t tokenLen;
+			unsigned int tokenLen;
 
 			token = COM_ParseExt2(text, qfalse);
 			if (!token[0])

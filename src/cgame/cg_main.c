@@ -2219,7 +2219,7 @@ const char *CG_ConfigString(int index)
  * @param[in] buffsize
  * @return
  */
-int CG_ConfigStringCopy(int index, char *buff, size_t buffsize)
+int CG_ConfigStringCopy(int index, char *buff, unsigned int buffsize)
 {
 	Q_strncpyz(buff, CG_ConfigString(index), buffsize);
 	return strlen(buff);
@@ -2984,7 +2984,7 @@ void QDECL CG_WriteToLog(const char *fmt, ...)
 	{
 		va_list argptr;
 		char    string[1024];
-		size_t  l;
+		unsigned int  l;
 
 		Com_sprintf(string, sizeof(string), "%s ", CG_GetRealTime());
 

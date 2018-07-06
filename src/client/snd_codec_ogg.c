@@ -70,12 +70,12 @@ snd_codec_t ogg_codec =
  *
  * @note fread() replacement
  */
-size_t S_OGG_Callback_read(void *ptr, size_t size, size_t nmemb, void *datasource)
+unsigned int S_OGG_Callback_read(void *ptr, unsigned int size, unsigned int nmemb, void *datasource)
 {
 	snd_stream_t *stream;
 	int          byteSize  = 0;
 	int          bytesRead = 0;
-	size_t       nMembRead = 0;
+	unsigned int       nMembRead = 0;
 
 	// check if input is valid
 	if (!ptr)

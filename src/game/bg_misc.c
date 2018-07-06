@@ -4458,7 +4458,7 @@ qboolean PC_String_Parse(int handle, const char **out)
  * @param size
  * @return
  */
-qboolean PC_String_ParseNoAlloc(int handle, char *out, size_t size)
+qboolean PC_String_ParseNoAlloc(int handle, char *out, unsigned int size)
 {
 	pc_token_t token;
 

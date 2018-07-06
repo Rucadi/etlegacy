@@ -474,7 +474,7 @@ void CMod_LoadEntityString(lump_t *l)
  */
 void CMod_LoadVisibility(lump_t *l)
 {
-	size_t len = l->filelen;
+	unsigned int len = l->filelen;
 	byte   *buf;
 
 	if (!len)

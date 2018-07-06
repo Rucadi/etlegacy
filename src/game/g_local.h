@@ -1361,7 +1361,7 @@ void G_IntermissionVoteTally(gentity_t *ent);
 
 void G_EntitySound(gentity_t *ent, const char *soundId, int volume); // Unused.
 void G_EntitySoundNoCut(gentity_t *ent, const char *soundId, int volume); // Unused.
-qboolean G_MatchOnePlayer(int *plist, char *err, size_t len);
+qboolean G_MatchOnePlayer(int *plist, char *err, unsigned int len);
 int ClientNumberFromString(gentity_t *to, char *s);
 void SanitizeString(char *in, char *out, qboolean fToLower);
 
@@ -1795,7 +1795,7 @@ extern level_locals_t   level;
 extern gentity_t        g_entities[];   ///< was explicitly set to MAX_ENTITIES
 extern g_campaignInfo_t g_campaigns[];
 
-#define FOFS(x) ((size_t)&(((gentity_t *)0)->x))
+#define FOFS(x) ((unsigned int)&(((gentity_t *)0)->x))
 
 #ifdef FEATURE_OMNIBOT
 extern vmCvar_t g_OmniBotPath;

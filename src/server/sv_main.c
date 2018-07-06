@@ -135,7 +135,7 @@ EVENT MESSAGES
 static char *SV_ExpandNewlines(char *in)
 {
 	static char string[1024];
-	size_t      l = 0;
+	unsigned int      l = 0;
 
 	while (*in && l < sizeof(string) - 3)
 	{
@@ -557,7 +557,7 @@ leakyBucket_t        outboundLeakyBucket;
 static long SVC_HashForAddress(netadr_t address)
 {
 	byte         *ip  = NULL;
-	size_t       size = 0;
+	unsigned int       size = 0;
 	unsigned int i;
 	long         hash = 0;
 

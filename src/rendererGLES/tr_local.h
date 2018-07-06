@@ -1571,7 +1571,7 @@ qhandle_t RE_RegisterModel(const char *name);
 qhandle_t RE_RegisterSkin(const char *name);
 void RE_Shutdown(qboolean destroyWindow);
 
-qboolean R_GetEntityToken(char *buffer, size_t size);
+qboolean R_GetEntityToken(char *buffer, unsigned int size);
 
 float R_ProcessLightmap(byte *pic, int in_padding, int width, int height, byte *pic_out);
 
@@ -2130,7 +2130,7 @@ void RE_BeginFrame(void);
 void RE_EndFrame(int *frontEndMsec, int *backEndMsec);
 void RE_SaveJPG(char *filename, int quality, int image_width, int image_height,
                 unsigned char *image_buffer, int padding);
-size_t RE_SaveJPGToBuffer(byte *buffer, size_t bufSize, int quality,
+unsigned int RE_SaveJPGToBuffer(byte *buffer, unsigned int bufSize, int quality,
                           int image_width, int image_height, byte *image_buffer, int padding);
 void RE_TakeVideoFrame(int width, int height,
                        byte *captureBuffer, byte *encodeBuffer, qboolean motionJpeg);

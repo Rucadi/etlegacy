@@ -183,7 +183,7 @@ unsigned int GLSL_GetAttribByName(const char *name)
  */
 void GLSL_CopyStringAlloc(char **out, const char *in)
 {
-	size_t size = strlen(in) * sizeof(char) + 1;
+	unsigned int size = strlen(in) * sizeof(char) + 1;
 
 	*out = (char *) Com_Allocate(size);
 	Com_Memset(*out, '\0', size);
@@ -571,7 +571,7 @@ static void GLSL_PrintShaderSource(GLhandleARB object)
  * @param[in] programNum
  * @return
  */
-qboolean GLSL_LoadShaderBinary(programInfo_t *info, size_t programNum)
+qboolean GLSL_LoadShaderBinary(programInfo_t *info, unsigned int programNum)
 {
 	GLint            success;
 	GLint            fileLength;
@@ -660,7 +660,7 @@ qboolean GLSL_LoadShaderBinary(programInfo_t *info, size_t programNum)
  * @param[in] info
  * @param[in] programNum
  */
-void GLSL_SaveShaderBinary(programInfo_t *info, size_t programNum)
+void GLSL_SaveShaderBinary(programInfo_t *info, unsigned int programNum)
 {
 	GLint            binaryLength;
 	GLuint           binarySize = 0;
@@ -1099,7 +1099,7 @@ static void GLSL_BuildShaderExtraDef()
  * @param[out] dest
  * @param[in] size
  */
-static void GLSL_GetShaderHeader(GLenum shaderType, char *dest, size_t size)
+static void GLSL_GetShaderHeader(GLenum shaderType, char *dest, unsigned int size)
 {
 	dest[0] = '\0';
 
@@ -1192,10 +1192,10 @@ static int GLSL_CompileGPUShader(GLhandleARB program, GLhandleARB *prevShader, c
  *
  * @note We don't ship glsl files anymore - GetFallbackShader() does the job
  */
-static void GLSL_GetShaderText(const char *name, GLenum shaderType, char **data, size_t *size, qboolean append)
+static void GLSL_GetShaderText(const char *name, GLenum shaderType, char **data, unsigned int *size, qboolean append)
 {
 	char   fullname[MAX_QPATH];
-	size_t dataSize = 0;
+	unsigned int dataSize = 0;
 	char   *dataBuffer = NULL;
 
 	if (shaderType == GL_VERTEX_SHADER)
@@ -1222,7 +1222,7 @@ static void GLSL_GetShaderText(const char *name, GLenum shaderType, char **data,
 		if (temp)
 		{
 			// Found a fallback shader and will use it
-			size_t strl = 0;
+			unsigned int strl = 0;
 			strl = strlen(temp) + 1;
 			if (append && *size)
 			{
@@ -1319,7 +1319,7 @@ static void GLSL_PreprocessShaderText(char *shaderBuffer, char *filetext, GLenum
 			{
 				// handle include
 				GLchar       *libBuffer         = NULL;
-				size_t       libBufferSize      = 0;
+				unsigned int       libBufferSize      = 0;
 				unsigned int currentOffset      = strlen(shaderBuffer);
 				char         *shaderBufferPoint = NULL;
 
@@ -1371,7 +1371,7 @@ static char *GLSL_BuildGPUShaderText(programInfo_t *info, GLenum shadertype)
 {
 	static char shaderBuffer[GLSL_BUFF];
 	GLchar      *mainBuffer    = NULL;
-	size_t      mainBufferSize = 0;
+	unsigned int      mainBufferSize = 0;
 	char        *filename      = NULL;
 	char        *output        = NULL;
 
@@ -2030,7 +2030,7 @@ static qboolean GLSL_FinnishShaderTextAndCompile(programInfo_t *info, int permut
 {
 	char   vpSource[64000];
 	char   fpSource[64000];
-	size_t size = sizeof(vpSource);
+	unsigned int size = sizeof(vpSource);
 
 	GLSL_GetShaderHeader(GL_VERTEX_SHADER, vpSource, size);
 	GLSL_GetShaderHeader(GL_FRAGMENT_SHADER, fpSource, size);
@@ -2187,7 +2187,7 @@ static void GLSL_SetInitialUniformValues(programInfo_t *info, int permutation)
 void GLSL_GenerateCheckSum(programInfo_t *info, const char *vertex, const char *fragment)
 {
 	char   *fullSource;
-	size_t size = 0;
+	unsigned int size = 0;
 
 	size += strlen(vertex);
 	size += strlen(fragment);
@@ -2261,9 +2261,9 @@ qboolean GLSL_CompileShaderProgram(programInfo_t *info)
 	info->fragmentShaderText = GLSL_BuildGPUShaderText(info, GL_FRAGMENT_SHADER);
 #if GLSL_PRECOMPILE
 	int    startTime, endTime, nextTicCount = 0;
-	size_t numCompiled = 0, tics = 0;
+	unsigned int numCompiled = 0, tics = 0;
 #endif
-	size_t numPermutations = 0;
+	unsigned int numPermutations = 0;
 	int    i = 0, x = 0;
 
 	GLSL_GenerateCheckSum(info, info->vertexShaderText, info->fragmentShaderText);
@@ -2313,7 +2313,7 @@ qboolean GLSL_CompileShaderProgram(programInfo_t *info)
 	{
 		if ((i + 1) >= nextTicCount)
 		{
-			size_t ticsNeeded = (size_t)(((double)(i + 1) / numPermutations) * 50.0);
+			unsigned int ticsNeeded = (unsigned int)(((double)(i + 1) / numPermutations) * 50.0);
 
 			do
 			{
@@ -2321,7 +2321,7 @@ qboolean GLSL_CompileShaderProgram(programInfo_t *info)
 			}
 			while (++tics < ticsNeeded);
 
-			nextTicCount = (size_t)((tics / 50.0) * numPermutations);
+			nextTicCount = (unsigned int)((tics / 50.0) * numPermutations);
 
 			if (i == (numPermutations - 1))
 			{
@@ -2552,9 +2552,9 @@ void GLSL_SetRequiredVertexPointers(programInfo_t *programlist)
 	// see void GLShader::SetRequiredVertexPointers() in gl_shader.cpp
 
 	//uint32_t macroVertexAttribs = 0;
-	//size_t   numMacros          = _compileMacros.size();
+	//unsigned int   numMacros          = _compileMacros.size();
 
-	//for (size_t j = 0; j < numMacros; j++)
+	//for (unsigned int j = 0; j < numMacros; j++)
 	//{
 	//    GLCompileMacro *macro = _compileMacros[j];
 

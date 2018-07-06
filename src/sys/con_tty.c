@@ -104,7 +104,7 @@ send "\b \b"
 static void CON_Back(void)
 {
 	char              key;
-	size_t UNUSED_VAR size;
+	unsigned int UNUSED_VAR size;
 
 	key  = '\b';
 	size = write(STDOUT_FILENO, &key, 1);
@@ -166,7 +166,7 @@ static void CON_Show(void)
 		ttycon_hide--;
 		if (ttycon_hide == 0)
 		{
-			size_t UNUSED_VAR size;
+			unsigned int UNUSED_VAR size;
 
 			size = write(STDOUT_FILENO, TTY_CONSOLE_PROMPT, strlen(TTY_CONSOLE_PROMPT));
 			if (TTY_con.cursor)
@@ -366,7 +366,7 @@ char *CON_Input(void)
 
 	if (ttycon_on)
 	{
-		size_t UNUSED_VAR size;
+		unsigned int UNUSED_VAR size;
 		int               avail = read(STDIN_FILENO, &key, 1);
 
 		if (avail != -1)

@@ -566,7 +566,7 @@ void SV_BotInitBotLib(void)
  * @param size - unused
  * @return
  */
-int SV_BotGetConsoleMessage(int client, char *buf, size_t size)
+int SV_BotGetConsoleMessage(int client, char *buf, unsigned int size)
 {
 	client_t *cl = &svs.clients[client];
 	int      index;

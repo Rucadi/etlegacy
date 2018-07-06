@@ -80,10 +80,10 @@ static void Tinygettext_Info(const std::string& str);
 class QInputbuf : public std::streambuf
 {
 private:
-	static const size_t BUFFER_SIZE = 8192;
+	static const unsigned int BUFFER_SIZE = 8192;
 	fileHandle_t        fileHandle;
 	char                buffer[BUFFER_SIZE];
-	size_t              putBack;
+	unsigned int              putBack;
 public:
 	QInputbuf(const std::string& filename) : putBack(1)
 	{
@@ -127,7 +127,7 @@ public:
 			start += putBack;
 		}
 
-		size_t n = FS_Read(start, BUFFER_SIZE - (start - base), fileHandle);
+		unsigned int n = FS_Read(start, BUFFER_SIZE - (start - base), fileHandle);
 
 		if (n == 0)
 		{

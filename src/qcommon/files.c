@@ -3863,7 +3863,7 @@ qboolean FS_InvalidGameDir(const char *gamedir)
  * @param[in] dlstring
  * @return
  */
-qboolean FS_ComparePaks(char *neededpaks, size_t len, qboolean dlstring)
+qboolean FS_ComparePaks(char *neededpaks, unsigned int len, qboolean dlstring)
 {
 	searchpath_t *sp;
 	qboolean     havepak;
@@ -4216,7 +4216,7 @@ const char *FS_LoadedPakChecksums(void)
 {
 	static char  info[BIG_INFO_STRING];
 	searchpath_t *search;
-	size_t       len;
+	unsigned int       len;
 
 	info[0] = 0;
 
@@ -4285,7 +4285,7 @@ const char *FS_LoadedPakPureChecksums(void)
 {
 	static char  info[BIG_INFO_STRING];
 	searchpath_t *search;
-	size_t       len;
+	unsigned int       len;
 
 	info[0] = 0;
 
@@ -4322,7 +4322,7 @@ const char *FS_ReferencedPakChecksums(void)
 {
 	static char  info[BIG_INFO_STRING];
 	searchpath_t *search;
-	size_t       len;
+	unsigned int       len;
 
 	info[0] = 0;
 
@@ -4357,7 +4357,7 @@ const char *FS_ReferencedPakNames(void)
 {
 	static char  info[BIG_INFO_STRING];
 	searchpath_t *search;
-	size_t       len;
+	unsigned int       len;
 
 	info[0] = 0;
 
@@ -4403,7 +4403,7 @@ const char *FS_ReferencedPakPureChecksums(void)
 	static char  info[BIG_INFO_STRING];
 	searchpath_t *search;
 	int          nFlags, numPaks = 0, checksum = fs_checksumFeed;
-	size_t       len;
+	unsigned int       len;
 
 	info[0] = 0;
 

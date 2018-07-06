@@ -448,7 +448,7 @@ static void R_DecodeRGB565Block(byte out[4][4][4], int bx, int by, int format, i
 {
     int             x, y;
     const byte     *row;
-    size_t          pitch;
+    unsigned int          pitch;
 
 //	REF_PARAM(format);
 
@@ -1057,7 +1057,7 @@ image_t *R_LoadDDSImageData(void *pImageData, const char *name, int bits, filter
 
 		int    w;
 		int    i;
-		size_t shift = mipOffsets[mipLevels] - mipOffsets[0];
+		unsigned int shift = mipOffsets[mipLevels] - mipOffsets[0];
 
 		/*
 		if(!GARB_texture_cube_map && !GLEW_EXT_texture_cube_map && !GLEW_VERSION_1_2)

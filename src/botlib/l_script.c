@@ -872,7 +872,7 @@ int PS_ReadLiteral(script_t *script, token_t *token)
  */
 int PS_ReadPunctuation(script_t *script, token_t *token)
 {
-	size_t        len;
+	unsigned int        len;
 	char          *p;
 	punctuation_t *punc;
 

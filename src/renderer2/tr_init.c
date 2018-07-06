@@ -443,7 +443,7 @@ the format is etxreal-YYYY_MM_DD-HH_MM_SS-MS.tga/jpeg/png
  * @param[out] padlen
  * @return
  */
-byte *RB_ReadPixels(int x, int y, int width, int height, size_t *offset, int *padlen)
+byte *RB_ReadPixels(int x, int y, int width, int height, unsigned int *offset, int *padlen)
 {
 	byte  *buffer, *bufstart;
 	int   padwidth, linelen;
@@ -481,7 +481,7 @@ static void RB_TakeScreenshot(int x, int y, int width, int height, const char *f
 	byte   *endline, *endmem;
 	byte   temp;
 	int    linelen, padlen;
-	size_t offset = 18, memcount;
+	unsigned int offset = 18, memcount;
 
 	allbuf = RB_ReadPixels(x, y, width, height, &offset, &padlen);
 	buffer = allbuf + offset - 18;
@@ -542,7 +542,7 @@ static void RB_TakeScreenshot(int x, int y, int width, int height, const char *f
 static void RB_TakeScreenshotJPEG(int x, int y, int width, int height, const char *fileName)
 {
 	byte   *buffer;
-	size_t offset = 0, memcount;
+	unsigned int offset = 0, memcount;
 	int    padlen;
 
 	buffer   = RB_ReadPixels(x, y, width, height, &offset, &padlen);
